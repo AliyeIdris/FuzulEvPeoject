@@ -70,11 +70,6 @@ public class HomePage {
     public void entePropertyName(String name){
         functionUtility.waitForElementVisible(searchField);
         searchField.sendKeys(name);
-    }
-    public void verifySearchResult(){
-        logger.info("Property searched as.....");
-    }
-    public void applyFiltersToTheSearch(String minimumBound,String maximumBound) {
         functionUtility.waitForElementVisible(forwardIcon);
         for (int i = 0; i < 5; i++) {
             forwardIcon.click();
@@ -83,6 +78,11 @@ public class HomePage {
         for (int i = 0; i < 3; i++) {
             backwardIcon.click();
         }
+    }
+    public void verifySearchResult(){
+        logger.info("Property searched as.....");
+    }
+    public void applyFiltersToTheSearch(String minimumBound,String maximumBound) {
         functionUtility.waitForElementVisible(minimumBoundField);
         minimumBoundField.sendKeys(minimumBound);
         functionUtility.waitForElementVisible(maximumBoundField);
