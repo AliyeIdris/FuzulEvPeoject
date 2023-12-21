@@ -12,8 +12,7 @@ import org.junit.runner.RunWith;
 @RunWith(Cucumber.class)
 @CucumberOptions(
         plugin = {"pretty","html:target/cucumber-testReport.html", "junit:target/cucumber-results.xml" },
-
-        features = {"classpath:features/homepage.feature"},
+        features = {"classpath:Features/homepage.feature"},
         tags="@UITest"
 )
 public class CucumberTest {

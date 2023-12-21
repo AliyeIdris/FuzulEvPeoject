@@ -13,7 +13,7 @@ import org.junit.Assert;
  * @created : 21.12.2023,11:59
  * @Email :aliyeidiris@gmail.com
  **/
-public class HomePageDefs extends BasePage {
+public class HomePageSteps extends BasePage {
     HomePage homePage=new HomePage(driver);
     @Given("user is on the application homepage")
     public void userIsOnTheApplicationHomepage() {

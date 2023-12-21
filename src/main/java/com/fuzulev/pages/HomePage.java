@@ -88,10 +88,10 @@ public class HomePage {
         functionUtility.waitForElementVisible(maximumBoundField);
         maximumBoundField.sendKeys(maximumBound);
         //functionUtility.waitForElementVisible(satilikCheckbox);
-        //satilikCheckbox.click();
+        satilikCheckbox.click();
         kiralikCheckbox.click();
         //günlükCheckbox.click();
-        functionUtility.waitForElementVisible(esyaliCheckbox);
+        //functionUtility.waitForElementVisible(esyaliCheckbox);
         esyaliCheckbox.click();
         for(int i=0;i<3;i++){
         roomNumberOptions.get(new Random().nextInt(roomNumberOptions.size())).click();
