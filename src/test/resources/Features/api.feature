@@ -8,4 +8,4 @@ Feature: Api Test
     And api should return more then one property
 
 
-    Scenario: The API should return an empty collection when no matching properties found
+    Scenario: The API should return an empty collection when no matching property found

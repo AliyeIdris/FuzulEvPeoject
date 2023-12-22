@@ -8,6 +8,9 @@ import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 import io.restassured.RestAssured;
 import io.restassured.response.Response;
+import org.junit.Assert;
+
+import java.util.List;
 
 import static com.fuzulev.utilities.FunctionUtility.readConfig;
 
@@ -19,10 +22,11 @@ import static com.fuzulev.utilities.FunctionUtility.readConfig;
 public class ApiSteps {
     Scenario scenario;
     Response response;
-    String host=readConfig("api_host");
+    String host=readConfig("api_server");
     int port=Integer.parseInt(readConfig("api_port1"));
-    String username=readConfig("api_username");
-    String password=readConfig("api_password");
+    String username=readConfig("userID");
+    String password=readConfig("password");
+    List<String> propertiesName;
 
     @Before
     public void beforeStep(Scenario scenario) {
@@ -39,13 +43,18 @@ public class ApiSteps {
 
     @When("the user send a get request to the properties endpoint")
     public void theUserSendAGetRequestToThePropertiesEndpoint() {
+        response=RestAssured.given().when().get("/endpoint").then().extract().response();
+        response.prettyPrint();
+        propertiesName=response.jsonPath().getList("name");
     }
 
     @Then("the api should return {int} response code")
-    public void theApiShouldReturnResponseCode(int arg0) {
+    public void theApiShouldReturnResponseCode(int statusCode) {
+        Assert.assertEquals(response.statusCode(),statusCode);
     }
 
     @And("api should return more then one property")
     public void apiShouldReturnMoreThenOneProperty() {
+        Assert.assertTrue(propertiesName.size()>1);
     }
 }
